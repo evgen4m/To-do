@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">DevTodoList</string>
+
+    <string name="search_bar">Поиск дел</string>
+    <string name="notification_disabled">Уведомление отключено</string>
+
 </resources>
