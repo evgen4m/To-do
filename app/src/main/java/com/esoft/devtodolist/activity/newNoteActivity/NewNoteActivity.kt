@@ -1,24 +1,33 @@
 package com.esoft.devtodolist.activity.newNoteActivity
 
-import android.content.Context
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import androidx.lifecycle.ViewModelProvider
 import com.esoft.devtodolist.R
+import com.esoft.devtodolist.app.App
 import com.esoft.devtodolist.databinding.ActivityNewNoteBinding
+import com.esoft.devtodolist.model.NoteModel
 
 class NewNoteActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityNewNoteBinding
     private lateinit var viewModel: NewNoteViewModel
+    lateinit var note: NoteModel
 
     companion object {
-        fun start (context: Context) {
-            val intent = Intent (context, NewNoteActivity::class.java)
-            context.startActivity(intent)
+        const val EXTRA_NOTES = "NotesDetailActivity.EXSTRA_NOTE"
+    }
+
+    fun start(caller: Activity, note: NoteModel?) {
+        val intent = Intent (caller, NewNoteActivity::class.java)
+        if(note != null) {
+            intent.putExtra(EXTRA_NOTES, note)
         }
+        caller.startActivity(intent)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +45,34 @@ class NewNoteActivity : AppCompatActivity() {
             onBackPressed()
         }
 
+        if(intent.hasExtra(EXTRA_NOTES)) {
+            note = intent.getParcelableExtra(EXTRA_NOTES)!!
+            binding.textNotesTitle.setText(note.textHead)
+            binding.noteText.setText(note.text)
+        }else {
+            note = NoteModel()
+        }
+
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.saveNote -> {
+                if(binding.textNotesTitle.text!!.isNotEmpty()) {
+                    note.textHead = binding.textNotesTitle.text.toString()
+                    note.text = binding.noteText.text.toString()
+                    note.done = false
+                    note.timestamp = System.currentTimeMillis()
+                    if (intent.hasExtra(EXTRA_NOTES)) {
+                        App.getInstance().repositoryDao.update(note)
+                    }else {
+                        App.getInstance().repositoryDao.insert(note)
+                    }
+                }
+                finish()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

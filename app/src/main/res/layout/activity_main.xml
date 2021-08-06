@@ -11,10 +11,10 @@
         android:id="@+id/search_bar"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
         android:layout_gravity="center_horizontal"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
         android:background="@drawable/corner_background"
         app:actionViewClass="android.widget.SearchView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,6 +43,7 @@
         android:layout_marginTop="200dp"
         android:gravity="center_horizontal"
         android:orientation="vertical"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_bar">
@@ -53,33 +54,32 @@
             android:background="@drawable/ic_back_info_icon" />
 
         <TextView
-            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="@string/back_info"
-            android:textStyle="normal"
             android:textColor="@color/textBlackColor"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:textStyle="normal" />
 
 
     </LinearLayout>
 
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerListNote"
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/search_bar"
         android:layout_alignParentEnd="true"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_bar"
-        tools:listitem="@layout/recycler_view_item"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:listitem="@layout/recycler_view_item" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floating_action_button"
@@ -88,11 +88,11 @@
         android:layout_gravity="bottom|right"
         android:layout_margin="16dp"
         android:contentDescription="TODO"
-        app:srcCompat="@drawable/ic_floating_action_button_icon"
-        app:tint="@color/blueColor"
+        app:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:backgroundTint="@color/white" />
+        app:srcCompat="@drawable/ic_floating_action_button_icon"
+        app:tint="@color/blueColor" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
