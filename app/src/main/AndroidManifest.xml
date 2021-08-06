@@ -13,7 +13,7 @@
         <activity android:name=".activity.settingsActivity.SettingsActivity"></activity>
         <activity android:name=".activity.newNoteActivity.NewNoteActivity" />
         <activity
-            android:name=".activity.SplashActivity"
+            android:name=".activity.splashActivity.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
