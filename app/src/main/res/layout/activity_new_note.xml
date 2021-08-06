@@ -60,7 +60,7 @@
         android:hint="Ввеедите подробный текст"
         android:textColor="@color/textBlackColor" />
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/linearDate"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
@@ -74,8 +74,11 @@
         android:orientation="horizontal">
 
         <ImageView
+            android:id="@+id/imageCalendar"
             android:layout_marginStart="10dp"
             android:layout_width="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_calendar"/>
 
@@ -84,6 +87,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:textSize="15sp"
+            android:layout_toEndOf="@id/imageCalendar"
+            android:layout_centerVertical="true"
             android:textColor="@color/textGrayColor"
             android:text="Выберите дату"/>
 
@@ -92,14 +97,16 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
+            android:layout_centerVertical="true"
             android:layout_marginEnd="10dp"
+            android:layout_alignParentEnd="true"
             android:textColor="@color/textGrayColor"
             android:backgroundTint="@color/blueButtonColor"
             android:text="29.05.2021"/>
 
-    </LinearLayout>
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/linearNotification"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
@@ -113,7 +120,10 @@
         android:orientation="horizontal">
 
         <ImageView
+            android:id="@+id/imageNotification"
             android:layout_marginStart="10dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_alarm"/>
@@ -123,6 +133,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:textSize="15sp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/imageNotification"
             android:textColor="@color/textGrayColor"
             android:text="Напоминание"/>
 
@@ -131,11 +143,13 @@
             android:layout_width="75dp"
             android:layout_height="40dp"
             android:layout_marginStart="60dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
             android:layout_marginEnd="10dp"
             android:textColor="@color/textGrayColor"
             android:backgroundTint="@color/blueButtonColor"
             android:text="20:30"/>
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </RelativeLayout>
