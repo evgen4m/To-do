@@ -1,4 +1,4 @@
-package com.esoft.devtodolist
+package com.esoft.devtodolist.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

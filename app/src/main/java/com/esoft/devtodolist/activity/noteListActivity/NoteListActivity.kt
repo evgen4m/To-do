@@ -6,7 +6,6 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.lifecycle.ViewModelProvider
 import com.esoft.devtodolist.R
-import com.esoft.devtodolist.activity.newNoteActivity.NewNoteActivity
 import com.esoft.devtodolist.databinding.ActivityMainBinding
 
 class NoteListActivity : AppCompatActivity() {
