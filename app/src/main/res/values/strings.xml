@@ -4,10 +4,12 @@
     // NoteListActivity text
     <string name="search_bar">Поиск дел</string>
     <string name="notification_disabled">Уведомление отключено</string>
+    <string name="back_info">Здесь будет ваш список.</string>
 
 
     //SettingsActivity text
     <string name="settingsActivity">Настройки</string>
+
 
 
 </resources>
