@@ -49,6 +49,7 @@ class NewNoteActivity : AppCompatActivity() {
             note = intent.getParcelableExtra(EXTRA_NOTES)!!
             binding.textNotesTitle.setText(note.textHead)
             binding.noteText.setText(note.text)
+            println(note.textHead)
         }else {
             note = NoteModel()
         }

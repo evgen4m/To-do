@@ -52,25 +52,25 @@ class NoteListActivity : AppCompatActivity() {
             viewModel.openNewNoteScreen(this)
         }
 
-        runOnUiThread {
-            handler = @SuppressLint("HandlerLeak")
-            object : Handler() {
-                @SuppressLint("SetTextI18n", "UseCompatLoadingForDrawables")
-                override fun handleMessage(msg: Message) {
-                    when (msg.what) {
-                        DELETE_NOTE -> {
-                            binding.recyclerListNote.visibility = View.GONE
-                            binding.linearBackgroundNoNote.visibility = View.VISIBLE
-                        }
-                        CREATE_NOTE -> {
-                            binding.recyclerListNote.visibility = View.VISIBLE
-                            binding.linearBackgroundNoNote.visibility = View.GONE
-                        }
 
+        handler = @SuppressLint("HandlerLeak")
+        object : Handler() {
+            @SuppressLint("SetTextI18n", "UseCompatLoadingForDrawables")
+            override fun handleMessage(msg: Message) {
+                when (msg.what) {
+                    DELETE_NOTE -> {
+                        binding.recyclerListNote.visibility = View.GONE
+                        binding.linearBackgroundNoNote.visibility = View.VISIBLE
                     }
+                    CREATE_NOTE -> {
+                        binding.recyclerListNote.visibility = View.VISIBLE
+                        binding.linearBackgroundNoNote.visibility = View.GONE
+                    }
+
                 }
             }
         }
+
 
         notesAdapter = NotesAdapter(handler)
         val lm = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
@@ -94,17 +94,11 @@ class NoteListActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
+        when (item.itemId) {
             R.id.getAllSettings -> {
                 viewModel.openSettings(this)
             }
         }
         return super.onOptionsItemSelected(item)
-    }
-
-    fun restartActivity() {
-        val refresh = Intent(this, NoteListActivity::class.java)
-        finish()
-        startActivity(refresh)
     }
 }

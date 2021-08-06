@@ -19,11 +19,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/note_text"
+        android:id="@+id/note_head"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginStart="5dp"
         android:layout_weight="1"
         android:gravity="center_vertical"
         android:minHeight="32dp"
@@ -38,8 +37,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="@+id/note_text"
-        app:layout_constraintTop_toBottomOf="@+id/note_text">
+        app:layout_constraintStart_toStartOf="@+id/note_head"
+        app:layout_constraintTop_toBottomOf="@+id/note_head">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -65,7 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="@+id/note_text"
+        app:layout_constraintStart_toStartOf="@+id/note_head"
         app:layout_constraintTop_toBottomOf="@+id/viewDate">
 
         <ImageView

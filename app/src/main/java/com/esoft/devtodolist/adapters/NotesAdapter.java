@@ -12,8 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
@@ -23,21 +24,16 @@ import androidx.recyclerview.widget.SortedList;
 
 import com.esoft.devtodolist.R;
 import com.esoft.devtodolist.activity.newNoteActivity.NewNoteActivity;
-import com.esoft.devtodolist.activity.noteListActivity.NoteListActivity;
 import com.esoft.devtodolist.app.App;
 import com.esoft.devtodolist.base.ConstValueKt;
 import com.esoft.devtodolist.model.NoteModel;
 
 import java.util.List;
 
-public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHolder> {
+public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHolder> implements Filterable {
 
     private SortedList<NoteModel> sortedList;
     private Handler handler;
-
-    public SortedList<NoteModel> getSortedList() {
-        return sortedList;
-    }
 
     public NotesAdapter(Handler handler) {
         this.handler = handler;
@@ -112,9 +108,28 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
         sortedList.replaceAll(notes);
     }
 
+    @Override
+    public Filter getFilter() {
+        return filterList;
+    }
+
+    private Filter filterList = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            return null;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+
+        }
+
+
+    };
+
     class NoteViewHolder extends RecyclerView.ViewHolder {
 
-        TextView noteText;
+        TextView noteHead;
         ImageView btnNoteSet;
         NoteModel note;
         CheckBox checkBox;
@@ -124,7 +139,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
 
         public NoteViewHolder(@NonNull View itemView) {
             super(itemView);
-            noteText = itemView.findViewById(R.id.note_text);
+            noteHead = itemView.findViewById(R.id.note_head);
             checkBox = itemView.findViewById(R.id.checkNote);
             btnNoteSet = itemView.findViewById(R.id.btn_settings_note);
 
@@ -175,7 +190,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
 
         public void bind(NoteModel note) {
             this.note = note;
-            noteText.setText(note.getTextHead());
+            noteHead.setText(note.getTextHead());
             updateStrokeOut();
 
             silentUpdate = false;
@@ -186,9 +201,9 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
 
         public void updateStrokeOut() {
             if (note.getDone()) {
-                noteText.setPaintFlags(noteText.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                noteHead.setPaintFlags(noteHead.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
             } else {
-                noteText.setPaintFlags(noteText.getPaintFlags() & ~Paint.STRIKE_THRU_TEXT_FLAG);
+                noteHead.setPaintFlags(noteHead.getPaintFlags() & ~Paint.STRIKE_THRU_TEXT_FLAG);
             }
         }
     }

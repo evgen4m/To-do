@@ -36,8 +36,27 @@ class NoteModel(): Parcelable {
     constructor(parcel: Parcel) : this() {
         id = parcel.readInt()
         text = parcel.readString().toString()
+        textHead = parcel.readString().toString()
+        dataCalendar = parcel.readString()
+        notifTime = parcel.readString()
         timestamp = parcel.readLong()
         done = parcel.readByte() != 0.toByte()
+    }
+
+
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeInt(id)
+        parcel.writeString(text)
+        parcel.writeString(textHead)
+        parcel.writeString(notifTime)
+        parcel.writeString(dataCalendar)
+        parcel.writeLong(timestamp)
+        parcel.writeByte(if (done) 1 else 0)
+    }
+
+    override fun describeContents(): Int {
+        return 0
     }
 
     override fun equals(other: Any?): Boolean {
@@ -48,7 +67,11 @@ class NoteModel(): Parcelable {
 
         if (id != other.id) return false
         if (text != other.text) return false
+        if (textHead != other.textHead) return false
         if (timestamp != other.timestamp) return false
+        if (dataCalendar != other.dataCalendar) return false
+        if (notifTime != other.notifTime) return false
+        if (timeCreate != other.timeCreate) return false
         if (done != other.done) return false
 
         return true
@@ -56,21 +79,14 @@ class NoteModel(): Parcelable {
 
     override fun hashCode(): Int {
         var result = id
-        result = 31 * result + text.hashCode()
+        result = 31 * result + (text?.hashCode() ?: 0)
+        result = 31 * result + (textHead?.hashCode() ?: 0)
         result = 31 * result + timestamp.hashCode()
+        result = 31 * result + (dataCalendar?.hashCode() ?: 0)
+        result = 31 * result + (notifTime?.hashCode() ?: 0)
+        result = 31 * result + (timeCreate?.hashCode() ?: 0)
         result = 31 * result + done.hashCode()
         return result
-    }
-
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeInt(id)
-        parcel.writeString(text)
-        parcel.writeLong(timestamp)
-        parcel.writeByte(if (done) 1 else 0)
-    }
-
-    override fun describeContents(): Int {
-        return 0
     }
 
     companion object CREATOR : Parcelable.Creator<NoteModel> {
