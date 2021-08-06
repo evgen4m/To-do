@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Paint;
 import android.os.Build;
+import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,6 +25,7 @@ import com.esoft.devtodolist.R;
 import com.esoft.devtodolist.activity.newNoteActivity.NewNoteActivity;
 import com.esoft.devtodolist.activity.noteListActivity.NoteListActivity;
 import com.esoft.devtodolist.app.App;
+import com.esoft.devtodolist.base.ConstValueKt;
 import com.esoft.devtodolist.model.NoteModel;
 
 import java.util.List;
@@ -30,12 +33,14 @@ import java.util.List;
 public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHolder> {
 
     private SortedList<NoteModel> sortedList;
+    private Handler handler;
 
     public SortedList<NoteModel> getSortedList() {
         return sortedList;
     }
 
-    public NotesAdapter() {
+    public NotesAdapter(Handler handler) {
+        this.handler = handler;
         sortedList = new SortedList<>(NoteModel.class, new SortedList.Callback<NoteModel>() {
             @Override
             public int compare(NoteModel o1, NoteModel o2) {
@@ -95,6 +100,11 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
 
     @Override
     public int getItemCount() {
+        if(sortedList.size() == 0) {
+            Message message = Message.obtain();
+            message.what = ConstValueKt.DELETE_NOTE;
+            handler.sendMessage(message);
+        }
         return sortedList.size();
     }
 
