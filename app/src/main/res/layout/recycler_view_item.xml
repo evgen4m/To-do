@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    android:layout_width="370dp"
     android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/corner_background"
     android:padding="5dp"
@@ -12,7 +13,7 @@
         android:id="@+id/checkNote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="3dp"
         android:layout_marginTop="10dp"
         android:button="@drawable/custom_checkbox"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,7 +21,7 @@
 
     <TextView
         android:id="@+id/note_head"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="1"
@@ -50,11 +51,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
-            android:text="@string/notification_disabled"
+            android:text="@string/date"
             android:textColor="@color/textGrayColor"
             android:textSize="10sp"
             tools:ignore="SmallSp"
-            tools:text="Уведомление отключено" />
+            tools:text="@string/date" />
 
     </LinearLayout>
 
@@ -64,6 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:visibility="visible"
         app:layout_constraintStart_toStartOf="@+id/note_head"
         app:layout_constraintTop_toBottomOf="@+id/viewDate">
 
@@ -77,11 +79,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
-            android:text="@string/notification_disabled"
             android:textColor="@color/textGrayColor"
+            android:text="@string/time"
             android:textSize="10sp"
             tools:ignore="SmallSp"
-            tools:text="Уведомление отключено" />
+            tools:text="@string/time" />
 
     </LinearLayout>
 
@@ -95,5 +97,21 @@
         app:layout_constraintBottom_toBottomOf="@+id/checkNote"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/checkNote" />
+
+    <TextView
+        android:id="@+id/textDetailInfoNote"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="5dp"
+        android:text="Нет дополнительной информации!"
+        android:textColor="@color/textBlackColor"
+        android:textSize="13sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_settings_note"
+        app:layout_constraintStart_toStartOf="@+id/note_head"
+        app:layout_constraintTop_toBottomOf="@+id/viewNotification"
+        tools:ignore="SmallSp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

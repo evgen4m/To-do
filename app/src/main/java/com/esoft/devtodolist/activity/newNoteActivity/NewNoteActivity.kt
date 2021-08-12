@@ -65,9 +65,9 @@ class NewNoteActivity : AppCompatActivity() {
                     note.done = false
                     note.timestamp = System.currentTimeMillis()
                     if (intent.hasExtra(EXTRA_NOTES)) {
-                        App.getInstance().repositoryDao.update(note)
+                        viewModel.updateNote(noteModel = note)
                     }else {
-                        App.getInstance().repositoryDao.insert(note)
+                        viewModel.insertNote(noteModel = note)
                     }
                 }
                 finish()

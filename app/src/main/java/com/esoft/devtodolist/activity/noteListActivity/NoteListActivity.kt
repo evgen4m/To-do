@@ -6,7 +6,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -16,11 +15,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.esoft.devtodolist.R
-import com.esoft.devtodolist.activity.newNoteActivity.NewNoteActivity
-import com.esoft.devtodolist.adapters.NotesAdapter
 import com.esoft.devtodolist.base.CREATE_NOTE
 import com.esoft.devtodolist.base.DELETE_NOTE
-import com.esoft.devtodolist.base.backFon
 import com.esoft.devtodolist.databinding.ActivityMainBinding
 import com.esoft.devtodolist.model.NoteModel
 
@@ -28,7 +24,7 @@ class NoteListActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: NoteListViewModel
-    lateinit var notesAdapter: NotesAdapter
+    lateinit var notesAdapter: NoteAdapter
 
     lateinit var handler: Handler
 
@@ -52,7 +48,6 @@ class NoteListActivity : AppCompatActivity() {
             viewModel.openNewNoteScreen(this)
         }
 
-
         handler = @SuppressLint("HandlerLeak")
         object : Handler() {
             @SuppressLint("SetTextI18n", "UseCompatLoadingForDrawables")
@@ -72,7 +67,7 @@ class NoteListActivity : AppCompatActivity() {
         }
 
 
-        notesAdapter = NotesAdapter(handler)
+        notesAdapter = NoteAdapter(handler)
         val lm = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         binding.recyclerListNote.layoutManager = lm
         binding.recyclerListNote.adapter = notesAdapter
@@ -88,7 +83,7 @@ class NoteListActivity : AppCompatActivity() {
         })
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.search_bar_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }

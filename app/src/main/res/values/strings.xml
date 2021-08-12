@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DevTodoList</string>
+    <string name="app_name">Join To-Do</string>
 
     // NoteListActivity text
     <string name="search_bar">Поиск дел</string>
@@ -9,7 +9,8 @@
 
     //SettingsActivity text
     <string name="settingsActivity">Настройки</string>
-
+    <string name="date">25/08/2021</string>
+    <string name="time">18:05</string>
 
 
 </resources>
