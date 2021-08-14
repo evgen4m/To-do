@@ -17,7 +17,6 @@ class CalendarDialogFragment: DialogFragment() {
 
     @SuppressLint("InflateParams")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        dialog!!.setTitle("Календарь")
         binding = CalendarDialogFragmentBinding.inflate(inflater, container, false)
         onClick()
         return binding.root
@@ -36,6 +35,10 @@ class CalendarDialogFragment: DialogFragment() {
                     (activity as SupportInterface).getDate(date = date!!)
                 }
             }
+            dismiss()
+        }
+
+        binding.cancelDate.setOnClickListener {
             dismiss()
         }
     }

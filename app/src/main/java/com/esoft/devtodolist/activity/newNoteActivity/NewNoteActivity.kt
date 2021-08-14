@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.esoft.devtodolist.R
 import com.esoft.devtodolist.databinding.ActivityNewNoteBinding
 import com.esoft.devtodolist.fragments.CalendarDialogFragment
+import com.esoft.devtodolist.fragments.ClockDialogFragment
 import com.esoft.devtodolist.fragments.SupportInterface
 import com.esoft.devtodolist.model.NoteModel
 import java.text.SimpleDateFormat
@@ -22,7 +23,7 @@ class NewNoteActivity : AppCompatActivity(), SupportInterface {
     private lateinit var viewModel: NewNoteViewModel
     lateinit var note: NoteModel
     private var dateF: String? = null
-    private var time: String?= null
+    private var timeF: String?= null
 
     companion object {
         const val EXTRA_NOTES = "NotesDetailActivity.EXSTRA_NOTE"
@@ -43,6 +44,7 @@ class NewNoteActivity : AppCompatActivity(), SupportInterface {
 
         viewModel = ViewModelProvider(this).get(NewNoteViewModel::class.java)
         val dialog = CalendarDialogFragment()
+        val dialogClock = ClockDialogFragment()
 
         setSupportActionBar(binding.toolbarNewNote)
         supportActionBar!!.title = null
@@ -58,6 +60,7 @@ class NewNoteActivity : AppCompatActivity(), SupportInterface {
             binding.noteText.setText(note.text)
             println(note.dataCalendar)
             binding.buttonDate.text = note.dataCalendar
+            binding.buttonNotification.text = note.notifTime
         }else {
             note = NoteModel()
             dateF = getDate()
@@ -65,7 +68,11 @@ class NewNoteActivity : AppCompatActivity(), SupportInterface {
         }
 
         binding.buttonDate.setOnClickListener {
-            dialog.show(supportFragmentManager, "ss")
+            dialog.show(supportFragmentManager, "calendarDialog")
+        }
+
+        binding.buttonNotification.setOnClickListener {
+            dialogClock.show(supportFragmentManager, "clockDialog")
         }
 
     }
@@ -77,6 +84,7 @@ class NewNoteActivity : AppCompatActivity(), SupportInterface {
                     note.textHead = binding.textNotesTitle.text.toString()
                     note.text = binding.noteText.text.toString()
                     note.dataCalendar = binding.buttonDate.text.toString()
+                    note.notifTime = binding.buttonNotification.text.toString()
                     note.done = false
                     if (intent.hasExtra(EXTRA_NOTES)) {
                         viewModel.updateNote(noteModel = note)
@@ -108,6 +116,7 @@ class NewNoteActivity : AppCompatActivity(), SupportInterface {
     }
 
     override fun getTime(time: String) {
-        this.time = time
+        this.timeF = time
+        binding.buttonNotification.text = timeF
     }
 }

@@ -130,6 +130,9 @@ class NoteAdapter(handler: Handler): RecyclerView.Adapter<NoteAdapter.NoteViewHo
             binding.textDate.text = note.dataCalendar
             if(note.notifTime == null) {
                 binding.viewNotification.visibility = View.GONE
+            }else{
+                binding.viewNotification.visibility = View.VISIBLE
+                binding.textNotification.text = note.notifTime
             }
             updateStrokeOut()
 

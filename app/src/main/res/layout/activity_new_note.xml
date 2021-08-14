@@ -142,7 +142,7 @@
 
         <Button
             android:id="@+id/buttonNotification"
-            android:layout_width="75dp"
+            android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:background="@android:color/transparent"
             android:layout_marginStart="60dp"
@@ -151,7 +151,7 @@
             android:layout_marginEnd="10dp"
             android:textColor="@color/blueColor"
             android:backgroundTint="@color/blueButtonColor"
-            android:text="20:30"/>
+            android:text="Время"/>
 
     </RelativeLayout>
 
