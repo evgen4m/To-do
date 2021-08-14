@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".activity.newNoteActivity.NewNoteActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -97,10 +98,11 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
+            android:background="@android:color/transparent"
             android:layout_centerVertical="true"
             android:layout_marginEnd="10dp"
             android:layout_alignParentEnd="true"
-            android:textColor="@color/textGrayColor"
+            android:textColor="@color/blueColor"
             android:backgroundTint="@color/blueButtonColor"
             android:text="29.05.2021"/>
 
@@ -142,11 +144,12 @@
             android:id="@+id/buttonNotification"
             android:layout_width="75dp"
             android:layout_height="40dp"
+            android:background="@android:color/transparent"
             android:layout_marginStart="60dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="10dp"
-            android:textColor="@color/textGrayColor"
+            android:textColor="@color/blueColor"
             android:backgroundTint="@color/blueButtonColor"
             android:text="20:30"/>
 

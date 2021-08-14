@@ -27,45 +27,45 @@ class NoteAdapter(handler: Handler): RecyclerView.Adapter<NoteAdapter.NoteViewHo
     private var handler: Handler = handler
     private var listSearch: List<NoteModel>
     var listOfNote = ArrayList<NoteModel>()
+    private var sortedList: SortedList<NoteModel>
 
     init {
         this.listSearch = ArrayList(listOfNote)
-    }
-
-    private var sortedList: SortedList<NoteModel> = SortedList(NoteModel::class.java, object : SortedList.Callback<NoteModel>() {
-        override fun compare(o1: NoteModel, o2: NoteModel): Int {
-            if (!o2.done && o1.done) {
-                return 1
+        sortedList = SortedList(NoteModel::class.java, object : SortedList.Callback<NoteModel>() {
+            override fun compare(o1: NoteModel, o2: NoteModel): Int {
+                if (!o2.done && o1.done) {
+                    return 1
+                }
+                return if (o2.done && !o1.done) {
+                    -1
+                } else (o2.timestamp - o1.timestamp).toInt()
             }
-            return if (o2.done && !o1.done) {
-                -1
-            } else (o2.timestamp - o1.timestamp).toInt()
-        }
 
-        override fun onChanged(position: Int, count: Int) {
-            notifyItemRangeChanged(position, count)
-        }
+            override fun onChanged(position: Int, count: Int) {
+                notifyItemRangeChanged(position, count)
+            }
 
-        override fun areContentsTheSame(oldItem: NoteModel, newItem: NoteModel): Boolean {
-            return oldItem.equals(newItem)
-        }
+            override fun areContentsTheSame(oldItem: NoteModel, newItem: NoteModel): Boolean {
+                return oldItem.equals(newItem)
+            }
 
-        override fun areItemsTheSame(item1: NoteModel, item2: NoteModel): Boolean {
-            return item1.id == item2.id
-        }
+            override fun areItemsTheSame(item1: NoteModel, item2: NoteModel): Boolean {
+                return item1.id == item2.id
+            }
 
-        override fun onInserted(position: Int, count: Int) {
-            notifyItemRangeInserted(position, count)
-        }
+            override fun onInserted(position: Int, count: Int) {
+                notifyItemRangeInserted(position, count)
+            }
 
-        override fun onRemoved(position: Int, count: Int) {
-            notifyItemRangeRemoved(position, count)
-        }
+            override fun onRemoved(position: Int, count: Int) {
+                notifyItemRangeRemoved(position, count)
+            }
 
-        override fun onMoved(fromPosition: Int, toPosition: Int) {
-            notifyItemMoved(fromPosition, toPosition)
-        }
-    })
+            override fun onMoved(fromPosition: Int, toPosition: Int) {
+                notifyItemMoved(fromPosition, toPosition)
+            }
+        })
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         return NoteViewHolder(
@@ -97,7 +97,7 @@ class NoteAdapter(handler: Handler): RecyclerView.Adapter<NoteAdapter.NoteViewHo
     private val filterList: Filter = object : Filter() {
         override fun performFiltering(constraint: CharSequence): FilterResults {
             val filteredList: MutableList<NoteModel> = ArrayList()
-            if (constraint.isEmpty() || constraint == null) {
+            if (constraint.isEmpty()) {
                 filteredList.addAll(listSearch)
             } else {
                 val filterPattern = constraint.toString().lowercase(Locale.getDefault()).trim { it <= ' ' }
@@ -127,6 +127,10 @@ class NoteAdapter(handler: Handler): RecyclerView.Adapter<NoteAdapter.NoteViewHo
         fun bind(note: NoteModel) {
             binding.noteHead.text = note.textHead
             binding.textDetailInfoNote.text = note.text
+            binding.textDate.text = note.dataCalendar
+            if(note.notifTime == null) {
+                binding.viewNotification.visibility = View.GONE
+            }
             updateStrokeOut()
 
             silentUpdate = false
@@ -166,7 +170,7 @@ class NoteAdapter(handler: Handler): RecyclerView.Adapter<NoteAdapter.NoteViewHo
             }
 
             itemView.setOnClickListener {
-                if (binding.textDetailInfoNote.visibility == View.GONE) {
+                if (binding.textDetailInfoNote.visibility == View.GONE && note.text!!.isNotEmpty()) {
                     binding.textDetailInfoNote.visibility = View.VISIBLE
                 } else {
                     binding.textDetailInfoNote.visibility = View.GONE
@@ -179,7 +183,7 @@ class NoteAdapter(handler: Handler): RecyclerView.Adapter<NoteAdapter.NoteViewHo
             if (note.done) {
                 binding.noteHead.paintFlags = binding.noteHead.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
             } else {
-                binding.noteHead.paintFlags = binding.noteHead.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+                binding.noteHead.paintFlags = binding.noteHead.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG
             }
         }
     }

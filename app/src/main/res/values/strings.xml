@@ -11,6 +11,8 @@
     <string name="settingsActivity">Настройки</string>
     <string name="date">25/08/2021</string>
     <string name="time">18:05</string>
+    <string name="complite">Готово</string>
+    <string name="cancel">Отменить</string>
 
 
 </resources>

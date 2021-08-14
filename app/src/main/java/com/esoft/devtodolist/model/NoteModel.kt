@@ -37,8 +37,8 @@ class NoteModel(): Parcelable {
         id = parcel.readInt()
         text = parcel.readString().toString()
         textHead = parcel.readString().toString()
-        dataCalendar = parcel.readString()
-        notifTime = parcel.readString()
+        dataCalendar = parcel.readString().toString()
+        notifTime = parcel.readString().toString()
         timestamp = parcel.readLong()
         done = parcel.readByte() != 0.toByte()
     }
@@ -49,8 +49,8 @@ class NoteModel(): Parcelable {
         parcel.writeInt(id)
         parcel.writeString(text)
         parcel.writeString(textHead)
-        parcel.writeString(notifTime)
         parcel.writeString(dataCalendar)
+        parcel.writeString(notifTime)
         parcel.writeLong(timestamp)
         parcel.writeByte(if (done) 1 else 0)
     }
