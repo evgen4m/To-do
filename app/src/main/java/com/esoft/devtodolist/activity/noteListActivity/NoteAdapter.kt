@@ -128,7 +128,7 @@ class NoteAdapter(handler: Handler): RecyclerView.Adapter<NoteAdapter.NoteViewHo
             binding.noteHead.text = note.textHead
             binding.textDetailInfoNote.text = note.text
             binding.textDate.text = note.dataCalendar
-            if(note.notifTime == null) {
+            if(note.notifTime.equals("Время") || note.notifTime == null) {
                 binding.viewNotification.visibility = View.GONE
             }else{
                 binding.viewNotification.visibility = View.VISIBLE

@@ -23,15 +23,15 @@ class NewNoteActivity : AppCompatActivity(), SupportInterface {
     private lateinit var viewModel: NewNoteViewModel
     lateinit var note: NoteModel
     private var dateF: String? = null
-    private var timeF: String?= null
+    private var timeF: String? = null
 
     companion object {
         const val EXTRA_NOTES = "NotesDetailActivity.EXSTRA_NOTE"
     }
 
     fun start(caller: Activity, note: NoteModel?) {
-        val intent = Intent (caller, NewNoteActivity::class.java)
-        if(note != null) {
+        val intent = Intent(caller, NewNoteActivity::class.java)
+        if (note != null) {
             intent.putExtra(EXTRA_NOTES, note)
         }
         caller.startActivity(intent)
@@ -54,14 +54,13 @@ class NewNoteActivity : AppCompatActivity(), SupportInterface {
             onBackPressed()
         }
 
-        if(intent.hasExtra(EXTRA_NOTES)) {
+        if (intent.hasExtra(EXTRA_NOTES)) {
             note = intent.getParcelableExtra(EXTRA_NOTES)!!
             binding.textNotesTitle.setText(note.textHead)
             binding.noteText.setText(note.text)
-            println(note.dataCalendar)
             binding.buttonDate.text = note.dataCalendar
             binding.buttonNotification.text = note.notifTime
-        }else {
+        } else {
             note = NoteModel()
             dateF = getDate()
             binding.buttonDate.text = dateF
@@ -78,9 +77,9 @@ class NewNoteActivity : AppCompatActivity(), SupportInterface {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
+        when (item.itemId) {
             R.id.saveNote -> {
-                if(binding.textNotesTitle.text!!.isNotEmpty()) {
+                if (binding.textNotesTitle.text!!.isNotEmpty()) {
                     note.textHead = binding.textNotesTitle.text.toString()
                     note.text = binding.noteText.text.toString()
                     note.dataCalendar = binding.buttonDate.text.toString()
@@ -88,7 +87,7 @@ class NewNoteActivity : AppCompatActivity(), SupportInterface {
                     note.done = false
                     if (intent.hasExtra(EXTRA_NOTES)) {
                         viewModel.updateNote(noteModel = note)
-                    }else {
+                    } else {
                         viewModel.insertNote(noteModel = note)
                     }
                 }
@@ -106,8 +105,7 @@ class NewNoteActivity : AppCompatActivity(), SupportInterface {
     @SuppressLint("SimpleDateFormat")
     fun getDate(): String {
         val sdf = SimpleDateFormat("dd.M.yyyy")
-        val currentDate = sdf.format(Date())
-        return currentDate
+        return sdf.format(Date())
     }
 
     override fun getDate(date: String) {
