@@ -1,19 +1,31 @@
 package com.esoft.devtodolist.activity.newNoteActivity
 
 
-import android.content.Context
-import androidx.lifecycle.ViewModel
-import com.esoft.devtodolist.app.App
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
 import com.esoft.devtodolist.model.NoteModel
+import com.esoft.devtodolist.model.NoteRepository
 
-class NewNoteViewModel: ViewModel() {
+class NewNoteViewModel(application: Application): AndroidViewModel(application) {
+
+    private val repository: NoteRepository = NoteRepository(application)
+    val noteModel = MutableLiveData<NoteModel>()
+
+
+    /*init {
+        val noteModel = repository.getFromId(noteId)
+        if (noteModel != null) {
+            this.noteModel.value = noteModel
+        }
+    }*/
 
     fun updateNote(noteModel: NoteModel) {
-        App.getInstance().repositoryDao.update(noteModel)
+       repository.update(noteModel = noteModel)
     }
 
     fun insertNote(noteModel: NoteModel) {
-        App.getInstance().repositoryDao.insert(noteModel)
+        repository.insert(noteModel = noteModel)
     }
 
 }

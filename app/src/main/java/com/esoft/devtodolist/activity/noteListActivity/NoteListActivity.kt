@@ -9,7 +9,9 @@ import android.os.Message
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,6 +21,7 @@ import com.esoft.devtodolist.base.CREATE_NOTE
 import com.esoft.devtodolist.base.DELETE_NOTE
 import com.esoft.devtodolist.databinding.ActivityMainBinding
 import com.esoft.devtodolist.model.NoteModel
+
 
 class NoteListActivity : AppCompatActivity() {
 
@@ -40,14 +43,12 @@ class NoteListActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.searchBar)
-        supportActionBar!!.title = null
 
         viewModel = ViewModelProvider(this).get(NoteListViewModel::class.java)
 
         binding.floatingActionButton.setOnClickListener {
             viewModel.openNewNoteScreen(this)
         }
-
         handler = @SuppressLint("HandlerLeak")
         object : Handler() {
             @SuppressLint("SetTextI18n", "UseCompatLoadingForDrawables")
@@ -66,7 +67,6 @@ class NoteListActivity : AppCompatActivity() {
             }
         }
 
-
         notesAdapter = NoteAdapter(handler)
         val lm = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         binding.recyclerListNote.layoutManager = lm
@@ -75,8 +75,9 @@ class NoteListActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        viewModel.getNoteLiveData().observe(this, Observer<List<NoteModel>>() {
-            notesAdapter.setItems(it)
+        viewModel.getNoteLiveData()?.observe(this, Observer<List<NoteModel>>() {
+            //notesAdapter.setItems(it)
+            notesAdapter.listOfNote = it as ArrayList<NoteModel>
             val message = Message.obtain()
             message.what = CREATE_NOTE
             handler.sendMessage(message)
@@ -85,6 +86,18 @@ class NoteListActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.search_bar_menu, menu)
+        val searchItem = menu.findItem(R.id.searchNote)
+        val searchView = searchItem.actionView as SearchView
+        searchView.imeOptions = EditorInfo.IME_ACTION_DONE
+        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+            override fun onQueryTextChange(newText: String?): Boolean {
+                notesAdapter.filter.filter(newText)
+                return false
+            }
+        })
         return super.onCreateOptionsMenu(menu)
     }
 

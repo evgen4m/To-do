@@ -5,6 +5,13 @@
     <item
         android:id="@+id/getAllSettings"
         android:title="Настройки"
-        app:showAsAction="withText"/>
-    
+        app:showAsAction="withText" />
+
+    <item
+        android:id="@+id/searchNote"
+        android:icon="@drawable/ic_search_icon"
+        android:title="Поиск"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="ifRoom|collapseActionView" />
+
 </menu>

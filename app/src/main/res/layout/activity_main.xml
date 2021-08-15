@@ -9,45 +9,26 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/search_bar"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="5dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/corner_background"
-        app:actionViewClass="android.widget.SearchView"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/white"
+        android:elevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_search_icon"
-            app:actionViewClass="android.widget.SearchView" />
-
-        <TextView
-            android:id="@+id/searchText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:text="@string/search_bar"
-            android:textColor="@color/textGrayColor"
-            app:actionViewClass="android.widget.SearchView"/>
-
-    </androidx.appcompat.widget.Toolbar>
+        app:layout_constraintTop_toTopOf="parent"
+        app:theme="@style/SearchViewStyle" />
 
     <LinearLayout
         android:id="@+id/linearBackgroundNoNote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:layout_marginTop="200dp"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:visibility="gone"
-        android:layout_centerInParent="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_bar">
@@ -83,12 +64,12 @@
         android:id="@+id/floating_action_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_gravity="bottom|right"
         android:layout_margin="16dp"
         android:contentDescription="TODO"
         app:backgroundTint="@color/white"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
         app:srcCompat="@drawable/ic_floating_action_button_icon"
         app:tint="@color/blueColor" />
 
