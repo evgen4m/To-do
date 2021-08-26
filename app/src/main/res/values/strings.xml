@@ -14,6 +14,9 @@
     <string name="complite">Готово</string>
     <string name="cancel">Отменить</string>
     <string name="search_hint">Поиск дела</string>
+    <string name="no_search_result">Нет результатов</string>
+    <string name="delete_all_notes">Удалить список</string>
+    <string name="hide_checked_notes">Скрыть завершенные</string>
 
 
 </resources>

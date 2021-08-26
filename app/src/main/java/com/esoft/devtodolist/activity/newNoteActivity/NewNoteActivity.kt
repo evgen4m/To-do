@@ -27,15 +27,18 @@ class NewNoteActivity : AppCompatActivity(), SupportInterface {
 
     companion object {
         const val EXTRA_NOTES = "NotesDetailActivity.EXSTRA_NOTE"
+
+        fun start(caller: Activity, note: NoteModel?) {
+            val intent = Intent(caller, NewNoteActivity::class.java).apply {
+                if (note != null) {
+                    putExtra(EXTRA_NOTES, note)
+                }
+            }
+            caller.startActivity(intent)
+        }
     }
 
-    fun start(caller: Activity, note: NoteModel?) {
-        val intent = Intent(caller, NewNoteActivity::class.java)
-        if (note != null) {
-            intent.putExtra(EXTRA_NOTES, note)
-        }
-        caller.startActivity(intent)
-    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -17,19 +17,22 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.esoft.devtodolist.R
+import com.esoft.devtodolist.app.MyApp
 import com.esoft.devtodolist.base.CREATE_NOTE
 import com.esoft.devtodolist.base.DELETE_NOTE
+import com.esoft.devtodolist.base.NO_SEARCH_NOTE
 import com.esoft.devtodolist.databinding.ActivityMainBinding
 import com.esoft.devtodolist.model.NoteModel
+import androidx.lifecycle.ViewModel as ViewModel
 
 
 class NoteListActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var viewModel: NoteListViewModel
     lateinit var notesAdapter: NoteAdapter
-
     lateinit var handler: Handler
+
+    private lateinit var viewModel: NoteListViewModel
 
     companion object {
         fun start(context: Context) {
@@ -60,6 +63,11 @@ class NoteListActivity : AppCompatActivity() {
                     }
                     CREATE_NOTE -> {
                         binding.recyclerListNote.visibility = View.VISIBLE
+                        binding.linearBackgroundNoNote.visibility = View.GONE
+                    }
+
+                    NO_SEARCH_NOTE -> {
+                        binding.recyclerListNote.visibility = View.GONE
                         binding.linearBackgroundNoNote.visibility = View.GONE
                     }
 
@@ -103,9 +111,7 @@ class NoteListActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.getAllSettings -> {
-                viewModel.openSettings(this)
-            }
+
         }
         return super.onOptionsItemSelected(item)
     }

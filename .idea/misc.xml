@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Git/To-do/app/src/main/res/drawable/ic_no_search_results.xml" value="0.3402777777777778" />
+        <entry key="..\:/Git/To-do/app/src/main/res/layout/clock_dialog_fragment.xml" value="0.32592592592592595" />
+        <entry key="..\:/Git/To-do/app/src/main/res/layout/recycler_view_item.xml" value="0.32592592592592595" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

@@ -3,8 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/getAllSettings"
-        android:title="Настройки"
+        android:id="@+id/hideCheckedNotes"
+        android:title="@string/hide_checked_notes"
+        app:showAsAction="withText" />
+
+    <item
+        android:id="@+id/deleteAllNotes"
+        android:title="@string/delete_all_notes"
         app:showAsAction="withText" />
 
     <item
@@ -13,5 +18,6 @@
         android:title="Поиск"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="ifRoom|collapseActionView" />
+
 
 </menu>

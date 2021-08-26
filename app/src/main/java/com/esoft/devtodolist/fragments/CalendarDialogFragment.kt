@@ -16,7 +16,7 @@ class CalendarDialogFragment: DialogFragment() {
     private var date: String? = null
 
     @SuppressLint("InflateParams")
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = CalendarDialogFragmentBinding.inflate(inflater, container, false)
         onClick()
         return binding.root

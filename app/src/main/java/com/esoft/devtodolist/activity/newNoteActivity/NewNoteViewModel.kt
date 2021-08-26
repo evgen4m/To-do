@@ -14,14 +14,16 @@ class NewNoteViewModel(application: Application): AndroidViewModel(application) 
 
 
     /*init {
-        val noteModel = repository.getFromId(noteId)
-        if (noteModel != null) {
-            this.noteModel.value = noteModel
+        val noteModels = repository.getAllNote()
+        if (noteModels != null) {
+            for (note in noteModels) {
+                this.noteModel.value = note
+            }
         }
     }*/
 
     fun updateNote(noteModel: NoteModel) {
-       repository.update(noteModel = noteModel)
+        repository.update(noteModel = noteModel)
     }
 
     fun insertNote(noteModel: NoteModel) {

@@ -17,7 +17,7 @@ class ClockDialogFragment : DialogFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = ClockDialogFragmentBinding.inflate(inflater, container, false)
         onClick()
         return binding.root
