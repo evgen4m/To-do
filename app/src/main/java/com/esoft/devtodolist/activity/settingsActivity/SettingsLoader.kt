@@ -22,7 +22,7 @@ class SettingsLoader(val context: Context) {
 
     @SuppressLint("ResourceAsColor")
     fun getAppColor(): Int {
-        return when(myPref.getString("app_color_pref", "Голубая")) {
+        return when(myPref.getString("app_color_pref", "Голубой")) {
             "Голубой" -> {
                R.style.Theme_DevTodoList_Blue
             }
