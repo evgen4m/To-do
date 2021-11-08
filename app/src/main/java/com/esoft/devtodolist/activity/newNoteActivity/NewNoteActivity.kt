@@ -9,10 +9,12 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.lifecycle.ViewModelProvider
 import com.esoft.devtodolist.R
+import com.esoft.devtodolist.activity.settingsActivity.SettingsLoader
 import com.esoft.devtodolist.databinding.ActivityNewNoteBinding
 import com.esoft.devtodolist.fragments.CalendarDialogFragment
 import com.esoft.devtodolist.fragments.ClockDialogFragment
 import com.esoft.devtodolist.fragments.SupportInterface
+import com.esoft.devtodolist.helpers.EXTRA_NOTES
 import com.esoft.devtodolist.model.NoteModel
 import java.text.SimpleDateFormat
 import java.util.*
@@ -24,10 +26,9 @@ class NewNoteActivity : AppCompatActivity(), SupportInterface {
     lateinit var note: NoteModel
     private var dateF: String? = null
     private var timeF: String? = null
+    private lateinit var settingsLoader: SettingsLoader
 
     companion object {
-        const val EXTRA_NOTES = "NotesDetailActivity.EXSTRA_NOTE"
-
         fun start(caller: Activity, note: NoteModel?) {
             val intent = Intent(caller, NewNoteActivity::class.java).apply {
                 if (note != null) {
@@ -37,13 +38,13 @@ class NewNoteActivity : AppCompatActivity(), SupportInterface {
             caller.startActivity(intent)
         }
     }
-
-
-
+    
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(SettingsLoader(this).getAppColor())
         super.onCreate(savedInstanceState)
         binding = ActivityNewNoteBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        settingsLoader = SettingsLoader(this)
 
         viewModel = ViewModelProvider(this).get(NewNoteViewModel::class.java)
         val dialog = CalendarDialogFragment()
@@ -56,6 +57,7 @@ class NewNoteActivity : AppCompatActivity(), SupportInterface {
         binding.toolbarNewNote.setNavigationOnClickListener {
             onBackPressed()
         }
+
 
         if (intent.hasExtra(EXTRA_NOTES)) {
             note = intent.getParcelableExtra(EXTRA_NOTES)!!
@@ -120,4 +122,5 @@ class NewNoteActivity : AppCompatActivity(), SupportInterface {
         this.timeF = time
         binding.buttonNotification.text = timeF
     }
+
 }

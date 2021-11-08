@@ -18,7 +18,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:theme="@style/SearchViewStyle" />
+        app:theme="@style/SearchViewStyle">
+
+    </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
         android:id="@+id/linearBackgroundNoNote"
@@ -61,15 +63,17 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floating_action_button"
+        style="@style/IconColorStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom|right"
-        android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:contentDescription="TODO"
-        app:backgroundTint="@color/white"
-        app:srcCompat="@drawable/ic_floating_action_button_icon"
-        app:tint="@color/blueColor" />
+        app:srcCompat="@drawable/ic_floating_action_button_icon" />
 
 </RelativeLayout>

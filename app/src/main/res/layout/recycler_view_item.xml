@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
-    android:layout_margin="5dp"
+    android:layout_margin="4dp"
     android:background="@drawable/corner_background"
     android:padding="5dp">
 
@@ -13,7 +13,6 @@
         android:id="@+id/checkNote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="3dp"
         android:button="@drawable/custom_checkbox"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,18 +20,16 @@
 
     <TextView
         android:id="@+id/note_head"
+        style="@style/ItemTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="1"
         android:ellipsize="end"
-        android:gravity="center_vertical"
-        android:minHeight="32dp"
-        app:layout_constraintHorizontal_bias="0"
-        android:minLines="1"
-        android:textColor="@color/textBlackColor"
-        android:textSize="15sp"
+        android:gravity="center"
+        app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toStartOf="@id/btn_settings_note"
+        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@+id/checkNote"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="some text testing" />
@@ -54,13 +51,12 @@
 
         <TextView
             android:id="@+id/textDate"
+            style="@style/ItemTextViewData"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="2dp"
             android:text="@string/date"
-            android:textColor="@color/textGrayColor"
-            android:textSize="10sp"
             tools:ignore="SmallSp"
             tools:text="@string/date" />
 
@@ -84,13 +80,12 @@
 
         <TextView
             android:id="@+id/textNotification"
+            style="@style/ItemTextViewData"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="2dp"
             android:text="@string/time"
-            android:textColor="@color/textGrayColor"
-            android:textSize="10sp"
             tools:ignore="SmallSp"
             tools:text="@string/time" />
 

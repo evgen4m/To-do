@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Text Size Dimen -->
+
+    <dimen name="normalFont">16sp</dimen>
+    <dimen name="bigFont">24sp</dimen>
+    <dimen name="smallFont">10sp</dimen>
+
+    <!-- RecyclerView Item Elements dimen -->
+
+    <dimen name="TextViewHeadSize">15sp</dimen>
+    <dimen name="TextDataSize">10sp</dimen>
+    <dimen name="TextMinHeightR">32dp</dimen>
+
+    <!-- New Note Activity Dimen -->
+
+    <dimen name="headText">20sp</dimen>
+    <dimen name="commentText">15sp</dimen>
+    <dimen name="dataText">15sp</dimen>
+
+</resources>

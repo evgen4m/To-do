@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/text_size_header">
+    </PreferenceCategory>
+    <ListPreference
+        android:defaultValue="Средний"
+        android:entries="@array/text_size_array"
+        android:entryValues="@array/text_size_array"
+        android:key="text_size_pref"
+        android:title="@string/text_size" />
+
+    <ListPreference
+        android:defaultValue="Стандартный"
+        android:entries="@array/text_style_array"
+        android:entryValues="@array/text_style_array"
+        android:key="text_style_pref"
+        android:title="@string/text_style" />
+
+    <PreferenceCategory android:title="Оформление">
+    </PreferenceCategory>
+
+    <ListPreference
+        android:defaultValue="Голубой"
+        android:entries="@array/app_color_array"
+        android:entryValues="@array/app_color_array"
+        android:key="app_color_pref"
+        android:title="Цвет приложения" />
+
+</PreferenceScreen>

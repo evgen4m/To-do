@@ -2,6 +2,7 @@ package com.esoft.devtodolist.app
 
 import android.app.Application
 import androidx.room.Room
+import com.esoft.devtodolist.R
 import com.esoft.devtodolist.base.AppDataBase
 import com.esoft.devtodolist.model.RepositoryDao
 
@@ -21,6 +22,7 @@ class MyApp : Application() {
                 .build()
 
         noteDao = appDataBase!!.repositoryDao()
+
     }
 
 

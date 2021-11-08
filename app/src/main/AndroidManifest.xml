@@ -9,7 +9,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.DevTodoList">
+        android:theme="@style/Theme.DevTodoList.Blu">
+        <activity
+            android:name=".activity.settingsActivity.SettingsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.aboutActivity.AboutActivity"
+            android:exported="true" />
         <activity android:name=".activity.newNoteActivity.NewNoteActivity" />
         <activity
             android:name=".activity.splashActivity.SplashActivity"

@@ -1,0 +1,32 @@
+<resources>
+    <!-- Reply Preference -->
+    <string-array name="reply_entries">
+        <item>Reply</item>
+        <item>Reply to all</item>
+    </string-array>
+
+    <string-array name="reply_values">
+        <item>reply</item>
+        <item>reply_all</item>
+    </string-array>
+
+    <string-array name="text_size_array">
+        <item>Большой</item>
+        <item>Средний</item>
+        <item>Маленький</item>
+    </string-array>
+
+    <string-array name="text_style_array">
+        <item>Стандартный</item>
+        <item>Жирный</item>
+    </string-array>
+
+    <string-array name="app_color_array">
+        <item>Голубой</item>
+        <item>Розовый</item>
+        <item>Зеленый</item>
+    </string-array>
+
+
+
+</resources>

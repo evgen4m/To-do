@@ -2,22 +2,36 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item
-        android:id="@+id/hideCheckedNotes"
-        android:title="@string/hide_checked_notes"
-        app:showAsAction="withText" />
 
-    <item
-        android:id="@+id/deleteAllNotes"
-        android:title="@string/delete_all_notes"
-        app:showAsAction="withText" />
 
     <item
         android:id="@+id/searchNote"
         android:icon="@drawable/ic_search_icon"
-        android:title="Поиск"
+        android:title="@string/search"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="ifRoom|collapseActionView" />
 
+    <item
+        android:id="@+id/settings"
+        android:title="@string/settingsActivity"
+        app:showAsAction="withText"/>
+
+    <item
+        android:id="@+id/about"
+        android:title="@string/about_application"
+        app:showAsAction="withText"/>
+
+
+    <item android:title="TODO"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_baseline_sort_24">
+        <menu>
+            <item
+                android:id="@+id/deleteCompliteNotes"
+                android:title="@string/delete_all_notes"
+                app:showAsAction="withText" />
+
+        </menu>
+    </item>
 
 </menu>

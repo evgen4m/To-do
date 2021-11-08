@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.esoft.devtodolist.helpers.DATA_BASE_NAME
 import com.esoft.devtodolist.model.NoteModel
 import com.esoft.devtodolist.model.RepositoryDao
 
@@ -24,7 +25,7 @@ abstract class AppDataBase : RoomDatabase() {
                         INSTANCE = Room.databaseBuilder(
                             context.applicationContext,
                             AppDataBase::class.java,
-                            "db"
+                            DATA_BASE_NAME
                         ).allowMainThreadQueries()
                             .fallbackToDestructiveMigration()
                             .build()

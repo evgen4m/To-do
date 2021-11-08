@@ -15,9 +15,9 @@ class NoteRepository (application: Application) {
 
     fun getNoteLiveData(): LiveData<List<NoteModel>>? = repositoryDao?.getAllLiveData()
 
-    fun getAllNote(): List<NoteModel>? = repositoryDao?.getAll()
-
-    fun getFromId(id: Int): NoteModel? = repositoryDao?.findById(uid = id)
+    fun deleteDoneNote(done: Boolean) {
+        repositoryDao?.deleteCompliteNote(done = done)
+    }
 
     fun update(noteModel: NoteModel) {
         repositoryDao?.update(note = noteModel)

@@ -15,10 +15,10 @@ import android.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
 import com.esoft.devtodolist.R
 import com.esoft.devtodolist.activity.newNoteActivity.NewNoteActivity
-import com.esoft.devtodolist.base.CREATE_NOTE
-import com.esoft.devtodolist.base.DELETE_NOTE
-import com.esoft.devtodolist.base.NO_SEARCH_NOTE
 import com.esoft.devtodolist.databinding.RecyclerViewItemBinding
+import com.esoft.devtodolist.helpers.CREATE_NOTE
+import com.esoft.devtodolist.helpers.DELETE_NOTE
+import com.esoft.devtodolist.helpers.NO_SEARCH_NOTE
 import com.esoft.devtodolist.model.NoteModel
 import com.esoft.devtodolist.model.NoteRepository
 import java.util.*
@@ -36,43 +36,6 @@ class NoteAdapter(handler: Handler) : RecyclerView.Adapter<NoteAdapter.NoteViewH
             searchList = ArrayList(listOfNote)
             notifyDataSetChanged()
         }
-
-    /*private var sortedList: SortedList<NoteModel> =
-    SortedList(NoteModel::class.java, object : SortedList.Callback<NoteModel>() {
-        override fun compare(o1: NoteModel, o2: NoteModel): Int {
-            if (!o2.done && o1.done) {
-                return 1
-            }
-            return if (o2.done && !o1.done) {
-                -1
-            } else (o2.timestamp - o1.timestamp).toInt()
-        }
-
-        override fun onChanged(position: Int, count: Int) {
-            notifyItemRangeChanged(position, count)
-        }
-
-        override fun areContentsTheSame(oldItem: NoteModel, newItem: NoteModel): Boolean {
-            return oldItem.equals(newItem)
-        }
-
-        override fun areItemsTheSame(item1: NoteModel, item2: NoteModel): Boolean {
-            return item1.id == item2.id
-        }
-
-        override fun onInserted(position: Int, count: Int) {
-            notifyItemRangeInserted(position, count)
-        }
-
-        override fun onRemoved(position: Int, count: Int) {
-            notifyItemRangeRemoved(position, count)
-        }
-
-        override fun onMoved(fromPosition: Int, toPosition: Int) {
-            notifyItemMoved(fromPosition, toPosition)
-        }
-    })*/
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         return NoteViewHolder(
@@ -94,17 +57,19 @@ class NoteAdapter(handler: Handler) : RecyclerView.Adapter<NoteAdapter.NoteViewH
         return listOfNote.size
     }
 
-    /*fun setItems(notes: List<NoteModel?>?) {
-        listOfNote.replaceAll(notes!!)
-    }*/
 
-
-    class NoteViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+     class NoteViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding = RecyclerViewItemBinding.bind(view)
-        val note = NoteModel()
         var silentUpdate = false
 
+        companion object {
+            var noteModel = NoteModel()
+        }
+
+
         fun bind(note: NoteModel) {
+
+            noteModel = note
 
             binding.apply {
                 noteHead.text = note.textHead
@@ -116,9 +81,20 @@ class NoteAdapter(handler: Handler) : RecyclerView.Adapter<NoteAdapter.NoteViewH
                     binding.viewNotification.visibility = View.VISIBLE
                     binding.textNotification.text = note.notifTime
                 }
+                updateStrokeOut()
 
+                silentUpdate = true
                 checkNote.isChecked = note.done
-                noteHead.paint.isStrikeThruText = note.done
+                silentUpdate = false
+
+                checkNote.setOnCheckedChangeListener { buttonView, isChecked ->
+                    if(!silentUpdate) {
+                        note.done = isChecked
+                        NoteRepository(application = Application()).update(noteModel = note)
+                    }
+                    updateStrokeOut()
+                }
+
 
             }
 
@@ -154,7 +130,18 @@ class NoteAdapter(handler: Handler) : RecyclerView.Adapter<NoteAdapter.NoteViewH
                     binding.textDetailInfoNote.visibility = View.GONE
                 }
             }
-
+        }
+        private fun updateStrokeOut() {
+            if(noteModel.done) {
+                binding.apply {
+                    noteHead.paintFlags = noteHead.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                }
+            }else {
+                binding.apply {
+                    noteHead.paintFlags =
+                        noteHead.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+                }
+            }
         }
     }
 

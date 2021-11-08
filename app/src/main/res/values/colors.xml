@@ -12,6 +12,8 @@
     <color name="blueColor">#45BAFC</color>
     <color name="textBlackColor">#011C26</color>
     <color name="floatingColor">#FFA1B0</color>
+    <color name="pinkColor">#FFFFA1B0</color>
     <color name="blueButtonColor">#C2EAF3</color>
+    <color name="greenColor">#52ADA2</color>
 
 </resources>

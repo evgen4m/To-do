@@ -1,5 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- App Colors Styles -->
+
+    <style name="Theme.DevTodoList.Blue" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/blueColor</item>
+        <item name="colorPrimaryVariant">@color/blueColor</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="android:textColorPrimary">@color/blueColor</item>
+        <item name="android:navigationBarColor">@color/blueColor</item>
+        <item name="android:textColor">@color/textBlackColor</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/blueColor</item>
+        <item name="colorSecondaryVariant">@color/blueColor</item>
+        <item name="colorOnSecondary">@color/textBlackColor</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Theme.DevTodoList.Pink" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/pinkColor</item>
+        <item name="colorPrimaryVariant">@color/pinkColor</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="android:textColorPrimary">@color/pinkColor</item>
+        <item name="android:navigationBarColor">@color/pinkColor</item>
+        <item name="android:textColor">@color/textBlackColor</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/pinkColor</item>
+        <item name="colorSecondaryVariant">@color/pinkColor</item>
+        <item name="colorOnSecondary">@color/textBlackColor</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Theme.DevTodoList.Green" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/greenColor</item>
+        <item name="colorPrimaryVariant">@color/greenColor</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="android:textColorPrimary">@color/greenColor</item>
+        <item name="android:navigationBarColor">@color/greenColor</item>
+        <item name="android:textColor">@color/textBlackColor</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/greenColor</item>
+        <item name="colorSecondaryVariant">@color/greenColor</item>
+        <item name="colorOnSecondary">@color/textBlackColor</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+
+    <!-- Splash Theme and SearchViewStyle -->
+
     <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@drawable/splash_screen</item>
     </style>
@@ -14,4 +71,53 @@
         <!-- The hint text that appears when the user has not typed anything -->
         <item name="queryHint">Поиск дела</item>
     </style>
+
+    <!-- Recycler View Item Elements Styles -->
+
+    <style name="ItemTextView">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/TextViewHeadSize</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:minHeight">@dimen/TextMinHeightR</item>
+        <item name="android:lines">1</item>
+    </style>
+
+    <style name="ItemTextViewData">
+        <item name="android:textSize">@dimen/TextDataSize</item>
+        <item name="android:textColor">@color/textGrayColor</item>
+    </style>
+
+    <!-- New Note Activity Styles -->
+
+    <style name="NewNoteActivityText">
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:textSize">@dimen/headText</item>
+    </style>
+
+    <style name="NewNoteActivityText.Secondary">
+        <item name="android:textColor">@color/textBlackColor</item>
+        <item name="android:textSize">@dimen/commentText</item>
+        <item name="android:backgroundTint">@android:color/transparent</item>
+    </style>
+
+    <style name="DataButtonView">
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:backgroundTint">@color/blueButtonColor</item>
+    </style>
+
+    <style name="DataTextView">
+        <item name="android:textColor">@color/textGrayColor</item>
+        <item name="android:textSize">@dimen/dataText</item>
+    </style>
+
+    <!-- Icon Color -->
+
+    <style name="IconColorStyle">
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="tint">?attr/colorPrimary</item>
+    </style>
+
+
+
 </resources>

@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:text="@string/complite"
-        android:textColor="@color/blueColor"
+        android:textColor="?attr/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/cancelDate"
         app:layout_constraintTop_toBottomOf="@+id/calendarView" />
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:text="@string/cancel"
-        android:textColor="@color/blueColor"
+        android:textColor="?attr/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calendarView" />
