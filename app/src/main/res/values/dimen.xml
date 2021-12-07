@@ -9,9 +9,9 @@
 
     <!-- RecyclerView Item Elements dimen -->
 
-    <dimen name="TextViewHeadSize">15sp</dimen>
-    <dimen name="TextDataSize">10sp</dimen>
-    <dimen name="TextMinHeightR">32dp</dimen>
+    <dimen name="TextViewHeadSize">16sp</dimen>
+    <dimen name="TextDataSize">12sp</dimen>
+    <dimen name="TextMinHeightR">24dp</dimen>
 
     <!-- New Note Activity Dimen -->
 

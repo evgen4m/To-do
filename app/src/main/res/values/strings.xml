@@ -21,6 +21,7 @@
     <string name="delete_all_notes">Удалить завершенные</string>
     <string name="hide_checked_notes">Скрыть завершенные</string>
     <string name="search">Поиск</string>
+    <string name="search_note">Поиск дел</string>
     <string name="sort">Сортировка</string>
     <string name="sort_by_name">Сортировка по имени</string>
     <string name="sort_by_date">Сортировка по дате</string>

@@ -1,5 +1,6 @@
 package com.esoft.devtodolist.activity.noteListActivity
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Application
 import android.graphics.Paint
@@ -21,6 +22,7 @@ import com.esoft.devtodolist.helpers.DELETE_NOTE
 import com.esoft.devtodolist.helpers.NO_SEARCH_NOTE
 import com.esoft.devtodolist.model.NoteModel
 import com.esoft.devtodolist.model.NoteRepository
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -76,9 +78,10 @@ class NoteAdapter(handler: Handler) : RecyclerView.Adapter<NoteAdapter.NoteViewH
                 textDetailInfoNote.text = note.text
                 textDate.text = note.dataCalendar
                 if (note.notifTime.equals("Время") || note.notifTime == null) {
-                    binding.viewNotification.visibility = View.GONE
+                    binding.textNotification.text = "Без уведомления"
+                    binding.imageNotification.setImageResource(R.drawable.ic_bell_disabled)
                 } else {
-                    binding.viewNotification.visibility = View.VISIBLE
+                    binding.imageNotification.setImageResource(R.drawable.ic_notification)
                     binding.textNotification.text = note.notifTime
                 }
                 updateStrokeOut()

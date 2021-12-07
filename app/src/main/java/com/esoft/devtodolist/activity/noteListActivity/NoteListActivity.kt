@@ -3,28 +3,23 @@ package com.esoft.devtodolist.activity.noteListActivity
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
-import android.view.inputmethod.EditorInfo
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.esoft.devtodolist.R
+import com.esoft.devtodolist.activity.searchActivity.SearchActivity
 import com.esoft.devtodolist.activity.settingsActivity.SettingsLoader
 import com.esoft.devtodolist.databinding.ActivityMainBinding
 import com.esoft.devtodolist.helpers.CREATE_NOTE
 import com.esoft.devtodolist.helpers.DELETE_NOTE
 import com.esoft.devtodolist.helpers.NO_SEARCH_NOTE
 import com.esoft.devtodolist.model.NoteModel
+import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -49,8 +44,8 @@ class NoteListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setSupportActionBar(binding.searchBar)
-        supportActionBar!!.title = getString(R.string.app_name)
+
+        onClick()
 
         viewModel = ViewModelProvider(this).get(NoteListViewModel::class.java)
 
@@ -98,40 +93,16 @@ class NoteListActivity : AppCompatActivity() {
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.search_bar_menu, menu)
-        val searchItem = menu.findItem(R.id.searchNote)
-        val searchView = searchItem.actionView as SearchView
-        searchView.imeOptions = EditorInfo.IME_ACTION_DONE
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                return false
+    private fun onClick() {
+        binding.searchView.apply {
+            searchNote.setOnClickListener {
+                val intent = Intent(this@NoteListActivity, SearchActivity::class.java)
+                startActivity(intent)
             }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                notesAdapter.filter.filter(newText)
-                return false
+            openSettings.setOnClickListener {
+                viewModel.openSettings(this@NoteListActivity)
             }
-        })
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    @RequiresApi(Build.VERSION_CODES.N)
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.deleteCompliteNotes -> {
-                viewModel.deleteCompliteNote()
-                true
-            }
-            R.id.about -> {
-                viewModel.openAboutScreen(this)
-                true
-            }
-            R.id.settings -> {
-                viewModel.openSettings(this)
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
         }
     }
+
 }

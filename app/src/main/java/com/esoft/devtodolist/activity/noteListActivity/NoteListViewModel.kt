@@ -3,13 +3,12 @@ package com.esoft.devtodolist.activity.noteListActivity
 import android.app.Activity
 import android.app.Application
 import android.content.Context
-import android.os.Message
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
 import com.esoft.devtodolist.activity.aboutActivity.AboutActivity
 import com.esoft.devtodolist.activity.newNoteActivity.NewNoteActivity
 import com.esoft.devtodolist.activity.settingsActivity.SettingsActivity
+import com.esoft.devtodolist.databinding.SearchViewBinding
 import com.esoft.devtodolist.helpers.CREATE_NOTE
 import com.esoft.devtodolist.model.NoteModel
 import com.esoft.devtodolist.model.NoteRepository

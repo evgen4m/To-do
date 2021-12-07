@@ -61,15 +61,14 @@
         <item name="android:windowBackground">@drawable/splash_screen</item>
     </style>
 
-    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
-        <!-- Gets rid of the search icon -->
-        <item name="searchIcon">@null</item>
-        <!-- Gets rid of the "underline" in the text -->
-        <item name="queryBackground">@null</item>
-        <!-- Gets rid of the search icon when the SearchView is expanded -->
-        <item name="searchHintIcon">@null</item>
-        <!-- The hint text that appears when the user has not typed anything -->
-        <item name="queryHint">Поиск дела</item>
+    <style name="SearchViewStyle">
+        <item name="android:hint">@string/search_note</item>
+        <item name="android:textColor">@color/textGrayColor</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="SearchViewStyle.Text">
+        <item name="android:textColor">@color/textBlackColor</item>
     </style>
 
     <!-- Recycler View Item Elements Styles -->
@@ -117,6 +116,8 @@
         <item name="android:backgroundTint">@color/white</item>
         <item name="tint">?attr/colorPrimary</item>
     </style>
+
+
 
 
 

@@ -3,24 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".activity.noteListActivity.NoteListActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/search_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center_horizontal"
-        android:background="@color/white"
-        android:elevation="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:theme="@style/SearchViewStyle">
-
-    </androidx.appcompat.widget.Toolbar>
+    <include
+        android:id="@+id/searchView"
+        layout="@layout/search_view" />
 
     <LinearLayout
         android:id="@+id/linearBackgroundNoNote"
@@ -32,8 +20,7 @@
         android:orientation="vertical"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_bar">
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -56,8 +43,8 @@
         android:id="@+id/recyclerListNote"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/search_bar"
-        android:layout_centerInParent="true"
+        android:layout_below="@+id/searchView"
+        android:layout_centerHorizontal="true"
         android:visibility="visible"
         tools:listitem="@layout/recycler_view_item" />
 

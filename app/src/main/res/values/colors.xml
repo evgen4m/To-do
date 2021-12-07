@@ -15,5 +15,6 @@
     <color name="pinkColor">#FFFFA1B0</color>
     <color name="blueButtonColor">#C2EAF3</color>
     <color name="greenColor">#52ADA2</color>
+    <color name="grayColor">#E2E5E6</color>
 
 </resources>
